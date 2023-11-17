@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Club</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="media_queries.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=VT323"
+    />
+  </head>
+  <body>
+    <div class="fullscreen-message">Use fullscreen browser</div>
+    <header class="navbar">
+      <nav class="navbar-content">
+        <div class="navbar-column">
+          <div class="nav-links left-links navbar-column">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+          </div>
+        </div>
+        <div class="navbar-column">
+          <div class="title-container navbar-column">
+            <h2 class="sub-title">Agents Of Change</h2>
+            <!-- New subtitle -->
+            <h1 class="navbar-title">Book Club</h1>
+          </div>
+        </div>
+        <div class="navbar-column">
+          <div class="nav-links right-links">
+            <a href="#members">Members</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="animation-wrapper">
+      <div id="galaxy-background-container"></div>
+      <div id="animation-container"></div>
+    </div>
+
+    <script>
+      function loadGalaxyBackground() {
+        fetch("galaxy_background.html")
+          .then((response) => response.text())
+          .then((html) => {
+            var container = document.getElementById(
+              "galaxy-background-container"
+            );
+            container.innerHTML = html;
+
+            // Dynamically create and append the module script for galaxy animation
+            var galaxyScript = document.createElement("script");
+            galaxyScript.type = "module";
+            galaxyScript.src = "galaxy.js";
+            document.body.appendChild(galaxyScript);
+
+            // Dynamically create and append the module script for the combined animation
+            // var animationScript = document.createElement("script");
+            // animationScript.type = "module";
+            // animationScript.src = "world_animation.js";
+            // document.body.appendChild(animationScript);
+          })
+          .catch((err) =>
+            console.error("Failed to load galaxy background:", err)
+          );
+      }
+
+      window.onload = loadGalaxyBackground;
+    </script>
+    <script src="frame_animation.js" type="module"></script>
+  </body>
+</html>

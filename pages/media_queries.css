@@ -1,0 +1,26 @@
+/* This style applies when the viewport is wider than 900px */
+@media (min-width: 901px) {
+    .fullscreen-message {
+        display: none; /* Hide the message */
+    }
+}
+
+/* This style applies when the viewport is 1432px wide or less */
+@media (max-width: 1432px) {
+    .navbar, /* Hide your navbar */
+    .other-content /* Hide other content containers by adding their selectors here */ {
+        display: none;
+    }
+
+    .fullscreen-message {
+        display: block; /* Show the message */
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px; /* Adjust as needed */
+        text-align: center;
+        color: white; /* Adjust as needed */
+    }
+}

@@ -1,0 +1,185 @@
+/* styles.css */
+.navbar-column {
+  flex: 1; /* Each column takes up equal space */
+  padding: 0 10px; /* Add padding to separate the content within columns */
+  box-sizing: border-box; /* Include padding in column width */
+  text-align: center; /* Center the content horizontally within each column */
+}
+
+body {
+  margin: 0;
+  background-color: navy; /* Navy background for the site */
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Hides the scrollbar */
+}
+
+/* Container for the navbar and the trapezoid */
+.navbar {
+  position: relative;
+  background-color: #333; /* Dark background for the navbar */
+  border: 3px solid white; /* White border around navbar */
+  min-height: 100px; /* Minimum height */
+  z-index: 0;
+  display: flex;
+  justify-content: center; /* Maintains horizontal spacing */
+  align-items: center; /* Center items vertically */
+}
+
+/* Larger trapezoid to act as the border */
+.navbar::before {
+  content: "";
+  position: absolute;
+  bottom: -54px; /* Extend beyond the bottom of the navbar to show the border */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%; /* Slightly wider to act as a border */
+  height: 54px; /* Slightly taller to act as a border */
+  background-color: white; /* Border color */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    75% 100%,
+    25% 100%
+  ); /* Adjusted values for the border */
+  z-index: 1; /* Ensures this is behind the actual trapezoid */
+}
+
+/* Actual trapezoid */
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: -50px; /* Bottom position of the trapezoid */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%; /* Width of the trapezoid */
+  height: 80px; /* Height of the trapezoid */
+  background-color: #333; /* Same as the navbar background */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    70% 100%,
+    30% 100%
+  ); /* The provided trapezoid shape */
+  z-index: 2; /* Ensures this is on top of the 'border' */
+}
+
+/* Style for the navbar content */
+.navbar-content {
+  display: flex;
+  justify-content: space-between; /* Space distribution for the 3 main containers */
+  align-items: center; /* Center items vertically */
+  height: 100%;
+  padding: 0 0px; /* Horizontal padding for the navbar */
+  z-index: 3; /* Higher than the z-index of ::before and ::after */
+}
+
+.title-container {
+  min-width: auto;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center align items horizontally */
+  justify-content: center; /* Center align items vertically if there's extra space */
+  text-align: center; /* Center the text within each title */
+  flex-grow: 2; /* Allows the title container to grow as needed */
+  padding-left: 100px;
+}
+
+.sub-title {
+  font-size: 26px; /* Smaller font size */
+  color: white;
+  margin-top: 20px;
+  padding: 0;
+  /* Additional styles as needed */
+}
+
+.navbar-title {
+  font-size: 40px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -10px;
+  margin-top: -35px;
+  /* Additional styles as needed */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center; /* Align the links vertically */
+  list-style: none;
+  flex: 1; /* Allow the link containers to take up equal space */
+}
+
+.nav-links a {
+  color: white; /* Links color */
+  text-decoration: none;
+  margin: 0 60px; /* Space between the links */
+  font-size: 28px; /* Adjust as needed */
+  transition: all 0.1s ease; /* Smooth transition for the underline and margin */
+  display: inline; /* Default display for anchor tags */
+}
+
+.nav-links a:hover {
+  border-bottom: 2px solid white; /* Underline effect on hover */
+}
+
+.left-links {
+  justify-content: center; /* Aligns the links to the right side of the left panel */
+  margin-right: 10px; /* Pushes the links away from the center */
+  padding-right: 50px;
+}
+
+.right-links {
+  padding-left: 80px;
+  justify-content: center; /* Aligns the links to the left side of the right panel */
+  margin-left: 10px; /* Pushes the links away from the center */
+}
+
+a {
+  font-family: 'VT323', monospace; /* Apply the VT323 font to <a> tags */
+}
+
+h2 {
+  font-family: 'VT323', monospace; /* Apply the VT323 font to <h2> tags */
+}
+
+h1 {
+  font-family: 'Bowlby One SC', sans-serif; /* Apply the Bowlby One SC font to <h1> tags */
+}
+
+.animation-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#galaxy-background-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Lower z-index */
+}
+
+#animation-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; /* Higher z-index to overlay on top */
+}
+
+#animation-container {
+  /* text-align: right; */
+  overflow: hidden; /* Hides the scrollbar */
+  height: 700px; /* Example fixed height, adjust as needed */
+  padding-left: 50px; /* Adjust this value to move the images more to the right */
+}
+
+#animation-container img {
+  max-height: 700px; /* Example maximum height for images, adjust as needed */
+  width: auto; /* Keeps the aspect ratio of the images */
+  display: block; /* Ensures the image takes the full width of its container */
+  /* margin-left: auto; */
+  overflow: hidden; /* Hides the scrollbar */
+}
